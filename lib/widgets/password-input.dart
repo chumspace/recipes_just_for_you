@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../loginpage.dart';
 import '../palatte.dart';
-import '../test.dart';
+
 
 class PasswordInput extends StatelessWidget {
   const PasswordInput({

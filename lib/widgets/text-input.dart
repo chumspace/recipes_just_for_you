@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../loginpage.dart';
 import '../palatte.dart';
-import '../test.dart';
+
 
 class TextInput extends StatelessWidget {
   const TextInput({
@@ -27,7 +28,7 @@ class TextInput extends StatelessWidget {
           borderRadius: BorderRadius.circular(16),
         ),
         child: TextField(
-          controller: usernameController,
+          controller: emailController,
           decoration: InputDecoration(
             contentPadding: const EdgeInsets.symmetric(vertical: 20),
             border: InputBorder.none,

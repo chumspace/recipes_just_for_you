@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "26516352696",
+    "project_id": "recipes-just-for-you",
+    "storage_bucket": "recipes-just-for-you.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:26516352696:android:f7794036c928b8676e0e4d",
+        "android_client_info": {
+          "package_name": "chumspacecoding.com.recipes_just_for_you"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "26516352696-04hsr6jlkqu8ajcmkflhi2c00sdl0n84.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBxWC3dIgjd6pHdSEGdTT_883CQMZkgx0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "26516352696-04hsr6jlkqu8ajcmkflhi2c00sdl0n84.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "26516352696-vb5ka0gtacmq8qk3h2f81lcqpeu1cd78.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "chumspacecoding.com"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

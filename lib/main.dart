@@ -1,8 +1,18 @@
 import 'package:flutter/material.dart';
-import 'loginscreen.dart';
-import 'test.dart';
+import 'package:recipes_just_for_you/widgets/auth_page.dart';
+import 'homepage.dart';
+import 'loginpage.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() => runApp(MyApp());
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
@@ -12,12 +22,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: Colors.greenAccent, // Set the primary color to accent green
       ),
-      initialRoute: '/',
-      routes: {
-        '': (context) => BackgroundPage(),
-        '/home': (context) => HomePage(),
-      },
-      home: BackgroundPage() ,
+
+      home: AuthPage(),
     );
   }
 }
