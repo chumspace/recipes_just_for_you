@@ -4,16 +4,19 @@ import 'package:recipes_just_for_you/widgets/background-image.dart';
 import 'package:recipes_just_for_you/widgets/password-input.dart';
 import 'package:recipes_just_for_you/widgets/rounded-button.dart';
 import '../palatte.dart';
-import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../widgets/text-input.dart';
 import '../widgets/square_tile.dart';
+import 'auth_service.dart';
+import 'widgets/confirm-password.dart';
 
 final emailController = TextEditingController();
 final passwordController = TextEditingController();
+final confirmPasswordController = TextEditingController();
 
 class RegisterPage extends StatefulWidget {
   final Function()? onTap;
+
   const RegisterPage({super.key, required this.onTap});
 
   @override
@@ -21,8 +24,8 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPage extends State<RegisterPage> {
-  //sign user in method
-  void signUserup() async {
+  //sign user up method
+  void signUserUp() async {
     showDialog(
       context: context,
       builder: (context) {
@@ -32,23 +35,37 @@ class _RegisterPage extends State<RegisterPage> {
       },
     );
 
-    //try signing user up
+    // check if password not matches
+    if (passwordController.text != confirmPasswordController.text) {
+      Navigator.pop(context);
+
+      showErrorMessage("Password do not match");
+
+      return;
+    }
+
+    //try creating the user
     try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: emailController.text,
-        password: passwordController.text,
-      );
-      //pop the loading circle
+      //check if password matches
+      if (passwordController.text == confirmPasswordController.text) {
+        await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: emailController.text,
+          password: confirmPasswordController.text,
+        );
+      }
+
+      // pop the loading circle
       Navigator.pop(context);
     } on FirebaseAuthException catch (e) {
-      //pop up the loading circle
-      Navigator.pop(context);
+      // // pop the loading circle
+      // Navigator.pop(context);
+
       //show error message
       showErrorMessage(e.code);
     }
   }
 
-  //wrong email message popup
+
   void showErrorMessage(String message) {
     showDialog(
       context: context,
@@ -57,9 +74,9 @@ class _RegisterPage extends State<RegisterPage> {
           backgroundColor: Colors.greenAccent,
           title: Center(
               child: Text(
-                message,
-                style: const TextStyle(color: Colors.white),
-              )),
+            message,
+            style: const TextStyle(color: Colors.white),
+          )),
         );
       },
     );
@@ -73,14 +90,14 @@ class _RegisterPage extends State<RegisterPage> {
       textDirection: TextDirection.ltr,
       child: Stack(
         children: [
-          BackgroundImage(),
+          const BackgroundImage(),
           Scaffold(
             backgroundColor: Colors.transparent,
             body: SingleChildScrollView(
               child: SafeArea(
                 child: Column(
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 30,
                     ),
                     Container(
@@ -94,7 +111,7 @@ class _RegisterPage extends State<RegisterPage> {
                       ),
                     ),
                     const SizedBox(
-                      height: 40,
+                      height: 30,
                     ),
                     Container(
                       padding: const EdgeInsets.symmetric(horizontal: 40),
@@ -112,37 +129,26 @@ class _RegisterPage extends State<RegisterPage> {
                               PasswordInput(
                                 icon: FontAwesomeIcons.lock,
                                 hint: 'Password',
-                                inputAction: TextInputAction.done,
+                                inputAction: TextInputAction.next,
                               ),
-                              PasswordInput(
+                              ConfirmPasswordInput(
                                 icon: FontAwesomeIcons.lock,
                                 hint: 'Confirm Password',
                                 inputAction: TextInputAction.done,
-                              ),
-                              Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 25.0),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [
-                                    Text(
-                                      'Forgot Password?',
-                                      style: kBodyText,
-                                    ),
-                                  ],
-                                ),
                               ),
                             ],
                           ),
                           Column(
                             children: [
-                              SizedBox(
+                              const SizedBox(
                                 height: 30,
                               ),
                               MyButton(
-                                onTap: signUserup,
+                                text: "Sign Up",
+                                onTap: signUserUp,
                               ),
-                              SizedBox(
-                                height: 35,
+                              const SizedBox(
+                                height: 20,
                               ),
                               Padding(
                                 padding: const EdgeInsets.symmetric(
@@ -161,7 +167,7 @@ class _RegisterPage extends State<RegisterPage> {
                                       child: Text(
                                         'Or continue with',
                                         style:
-                                        TextStyle(color: Colors.grey[700]),
+                                            TextStyle(color: Colors.grey[700]),
                                       ),
                                     ),
                                     Expanded(
@@ -174,50 +180,47 @@ class _RegisterPage extends State<RegisterPage> {
                                 ),
                               ),
 
-                              const SizedBox(height: 30),
+                              const SizedBox(height: 10),
 
                               // google + apple sign in buttons
-                              const Row(
+                              Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   // google button
                                   Expanded(
                                       child: SquareTile(
+                                          onTap: () => AuthService().signInWithGoogle(),
                                           imagePath:
-                                          'assets/images/google.png')),
+                                              'assets/images/google.png')),
 
                                   SizedBox(width: 25),
 
                                   // apple button
                                   Expanded(
                                       child: SquareTile(
+                                        onTap: (){},
                                           imagePath: 'assets/images/apple.png'))
                                 ],
                               ),
 
-                              const SizedBox(height: 50),
-
-                              // not a member? register now
+                              const SizedBox(height: 10),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(
-                                    'Not a member?',
-                                    style: TextStyle(color: Colors.grey[700]),
+                                    'Already have an account?',
+                                    style: kBodyText,
                                   ),
                                   const SizedBox(width: 4),
                                   GestureDetector(
                                     onTap: widget.onTap,
-                                    child: const Text(
-                                      'Register now',
-                                      style: TextStyle(
-                                        color: Colors.blue,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ),
+                                    child: const Text('Login now',
+                                        style: TextStyle(
+                                            color: Colors.blue,
+                                            fontWeight: FontWeight.bold)),
+                                  )
                                 ],
-                              ),
+                              )
                             ],
                           )
                         ],

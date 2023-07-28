@@ -1,27 +1,19 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'main.dart';
 
-void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Basic Home Page',
-      theme: ThemeData(
-        primarySwatch: Colors.green,
-      ),
-      home: HomePage(),
-    );
-  }
-}
-final user = FirebaseAuth.instance.currentUser!;
+
+
 class HomePage extends StatelessWidget {
+
+  final user = FirebaseAuth.instance.currentUser!;
+  //sign user out
   void signUserOut() {
     FirebaseAuth.instance.signOut();
 
   }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

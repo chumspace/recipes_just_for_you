@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:recipes_just_for_you/widgets/auth_page.dart';
-import 'homepage.dart';
-import 'loginpage.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 

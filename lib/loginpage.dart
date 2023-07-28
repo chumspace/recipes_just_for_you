@@ -1,10 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:recipes_just_for_you/auth_service.dart';
 import 'package:recipes_just_for_you/widgets/background-image.dart';
 import 'package:recipes_just_for_you/widgets/password-input.dart';
 import 'package:recipes_just_for_you/widgets/rounded-button.dart';
 import '../palatte.dart';
-import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../widgets/text-input.dart';
 import '../widgets/square_tile.dart';
@@ -22,7 +22,7 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPage extends State<LoginPage> {
   //sign user in method
-  void signUserin() async {
+  void signUserIn() async {
     showDialog(
       context: context,
       builder: (context) {
@@ -38,7 +38,6 @@ class _LoginPage extends State<LoginPage> {
         email: emailController.text,
         password: passwordController.text,
       );
-      //pop the loading circle
       Navigator.pop(context);
     } on FirebaseAuthException catch (e) {
       //pop up the loading circle
@@ -73,14 +72,14 @@ class _LoginPage extends State<LoginPage> {
       textDirection: TextDirection.ltr,
       child: Stack(
         children: [
-          BackgroundImage(),
+          const BackgroundImage(),
           Scaffold(
             backgroundColor: Colors.transparent,
             body: SingleChildScrollView(
               child: SafeArea(
                 child: Column(
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 30,
                     ),
                     Container(
@@ -130,13 +129,14 @@ class _LoginPage extends State<LoginPage> {
                           ),
                           Column(
                             children: [
-                              SizedBox(
+                              const SizedBox(
                                 height: 30,
                               ),
                               MyButton(
-                                onTap: signUserin,
+                                text: "Sign in",
+                                onTap: signUserIn,
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 35,
                               ),
                               Padding(
@@ -172,20 +172,22 @@ class _LoginPage extends State<LoginPage> {
                               const SizedBox(height: 30),
 
                               // google + apple sign in buttons
-                              const Row(
+                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   // google button
-                                  Expanded(
-                                      child: SquareTile(
-                                          imagePath:
-                                              'assets/images/google.png')),
+                                  SquareTile(
+                                    onTap: () => AuthService().signInWithGoogle(),
+                                      imagePath:
+                                      'assets/images/google.png'
+                                     ),
 
                                   SizedBox(width: 25),
 
                                   // apple button
                                   Expanded(
                                       child: SquareTile(
+                                        onTap: (){},
                                           imagePath: 'assets/images/apple.png'))
                                 ],
                               ),

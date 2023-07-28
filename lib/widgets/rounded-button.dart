@@ -4,8 +4,9 @@ import '../palatte.dart';
 
 class MyButton extends StatelessWidget {
   final Function()? onTap;
+  final String text;
 
-  const MyButton({super.key, required this.onTap});
+  const MyButton({super.key, required this.onTap, required this.text,});
 
   @override
   Widget build(BuildContext context) {
@@ -17,11 +18,11 @@ class MyButton extends StatelessWidget {
           color: Colors.greenAccent,
           borderRadius: BorderRadius.circular(32),
         ),
-        child: const Center(
+        child:  Center(
           child: Padding(
             padding: EdgeInsets.symmetric(vertical: 16.0),
             child: Text(
-              "Sign In",
+              text,
               style: kBodyText
               ),
           ),

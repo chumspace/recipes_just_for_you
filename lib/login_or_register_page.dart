@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:recipes_just_for_you/loginpage.dart';
+import 'package:recipes_just_for_you/register_page.dart';
 
 class LoginOrRegisterPage extends StatefulWidget {
   const LoginOrRegisterPage({super.key});
@@ -14,9 +15,9 @@ class _LoginOrRegisterPageState extends State<LoginOrRegisterPage> {
 
   //toggle between login and register page
   void togglePages() {
-    setState(){
+    setState((){
       showLoginPage = !showLoginPage;
-    };
+    });
   }
 
   @override
@@ -24,7 +25,7 @@ class _LoginOrRegisterPageState extends State<LoginOrRegisterPage> {
     if(showLoginPage) {
       return LoginPage(onTap: togglePages,);
     }else{
-      return RegisterPage();
+      return RegisterPage(onTap: togglePages,);
     }
   }
 }
