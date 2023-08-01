@@ -47,12 +47,13 @@ class _RegisterPage extends State<RegisterPage> {
     //try creating the user
     try {
       //check if password matches
-      if (passwordController.text == confirmPasswordController.text) {
-        await FirebaseAuth.instance.createUserWithEmailAndPassword(
-          email: emailController.text,
-          password: confirmPasswordController.text,
-        );
-      }
+      // if (passwordController.text == confirmPasswordController.text) {
+      //   await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      //     email: emailController.text,
+      //     password: passwordController.text,
+      //   );
+      // }
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(email: emailController.text, password: passwordController.text);
 
       // pop the loading circle
       Navigator.pop(context);

@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
         primaryColor: Colors.greenAccent, // Set the primary color to accent green
       ),
 
-      home: AuthPage(),
+      home: const AuthPage(),
     );
   }
 }

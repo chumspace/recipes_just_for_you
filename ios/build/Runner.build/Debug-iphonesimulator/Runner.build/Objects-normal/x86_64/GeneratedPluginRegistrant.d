@@ -1,0 +1,20 @@
+dependencies: \
+  /Users/chumspace/StudioProjects/recipes_just_for_you/ios/Runner/GeneratedPluginRegistrant.m \
+  /Users/chumspace/StudioProjects/recipes_just_for_you/ios/Runner/GeneratedPluginRegistrant.h \
+  /Users/chumspace/StudioProjects/recipes_just_for_you/ios/build/Debug-iphonesimulator/Flutter.framework/Modules/module.modulemap \
+  /Users/chumspace/StudioProjects/recipes_just_for_you/ios/build/Debug-iphonesimulator/Flutter.framework/Headers/Flutter.h \
+  /Users/chumspace/StudioProjects/recipes_just_for_you/ios/build/Debug-iphonesimulator/Flutter.framework/Headers/FlutterAppDelegate.h \
+  /Users/chumspace/StudioProjects/recipes_just_for_you/ios/build/Debug-iphonesimulator/Flutter.framework/Headers/FlutterMacros.h \
+  /Users/chumspace/StudioProjects/recipes_just_for_you/ios/build/Debug-iphonesimulator/Flutter.framework/Headers/FlutterPlugin.h \
+  /Users/chumspace/StudioProjects/recipes_just_for_you/ios/build/Debug-iphonesimulator/Flutter.framework/Headers/FlutterBinaryMessenger.h \
+  /Users/chumspace/StudioProjects/recipes_just_for_you/ios/build/Debug-iphonesimulator/Flutter.framework/Headers/FlutterChannels.h \
+  /Users/chumspace/StudioProjects/recipes_just_for_you/ios/build/Debug-iphonesimulator/Flutter.framework/Headers/FlutterCodecs.h \
+  /Users/chumspace/StudioProjects/recipes_just_for_you/ios/build/Debug-iphonesimulator/Flutter.framework/Headers/FlutterPlatformViews.h \
+  /Users/chumspace/StudioProjects/recipes_just_for_you/ios/build/Debug-iphonesimulator/Flutter.framework/Headers/FlutterTexture.h \
+  /Users/chumspace/StudioProjects/recipes_just_for_you/ios/build/Debug-iphonesimulator/Flutter.framework/Headers/FlutterCallbackCache.h \
+  /Users/chumspace/StudioProjects/recipes_just_for_you/ios/build/Debug-iphonesimulator/Flutter.framework/Headers/FlutterDartProject.h \
+  /Users/chumspace/StudioProjects/recipes_just_for_you/ios/build/Debug-iphonesimulator/Flutter.framework/Headers/FlutterEngine.h \
+  /Users/chumspace/StudioProjects/recipes_just_for_you/ios/build/Debug-iphonesimulator/Flutter.framework/Headers/FlutterEngineGroup.h \
+  /Users/chumspace/StudioProjects/recipes_just_for_you/ios/build/Debug-iphonesimulator/Flutter.framework/Headers/FlutterHeadlessDartRunner.h \
+  /Users/chumspace/StudioProjects/recipes_just_for_you/ios/build/Debug-iphonesimulator/Flutter.framework/Headers/FlutterPluginAppLifeCycleDelegate.h \
+  /Users/chumspace/StudioProjects/recipes_just_for_you/ios/build/Debug-iphonesimulator/Flutter.framework/Headers/FlutterViewController.h
