@@ -99,21 +99,23 @@ class _LoginPage extends State<LoginPage> {
                       padding: const EdgeInsets.symmetric(horizontal: 40),
                       child: Column(
                         children: [
-                          const Column(
+                           Column(
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
                               TextInput(
+                                controller: emailController,
                                 icon: FontAwesomeIcons.solidEnvelope,
                                 hint: 'Email',
                                 inputType: TextInputType.emailAddress,
                                 inputAction: TextInputAction.next,
                               ),
                               PasswordInput(
+                                controller: passwordController,
                                 icon: FontAwesomeIcons.lock,
                                 hint: 'Password',
                                 inputAction: TextInputAction.done,
                               ),
-                              Padding(
+                              const Padding(
                                 padding: EdgeInsets.symmetric(horizontal: 25.0),
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.end,

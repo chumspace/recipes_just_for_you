@@ -5,8 +5,10 @@ import '../palatte.dart';
 
 
 class TextInput extends StatelessWidget {
+  final TextEditingController controller;
   const TextInput({
      Key? key,
+    required this.controller,
     required this.icon,
     required this.hint,
     required this.inputType,
@@ -28,7 +30,7 @@ class TextInput extends StatelessWidget {
           borderRadius: BorderRadius.circular(16),
         ),
         child: TextField(
-          controller: emailController,
+          controller: controller,
           decoration: InputDecoration(
             contentPadding: const EdgeInsets.symmetric(vertical: 20),
             border: InputBorder.none,

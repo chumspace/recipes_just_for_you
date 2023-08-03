@@ -24,48 +24,41 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPage extends State<RegisterPage> {
-  //sign user up method
+
+
   void signUserUp() async {
-    showDialog(
-      context: context,
-      builder: (context) {
-        return const Center(
-          child: CircularProgressIndicator(),
-        );
-      },
-    );
 
-    // check if password not matches
-    if (passwordController.text != confirmPasswordController.text) {
-      Navigator.pop(context);
+    // Show loading indicator
+    showDialog(context: context, builder: (context) => const CircularProgressIndicator());
 
-      showErrorMessage("Password do not match");
-
-      return;
-    }
-
-    //try creating the user
     try {
-      //check if password matches
-      // if (passwordController.text == confirmPasswordController.text) {
-      //   await FirebaseAuth.instance.createUserWithEmailAndPassword(
-      //     email: emailController.text,
-      //     password: passwordController.text,
-      //   );
-      // }
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(email: emailController.text, password: passwordController.text);
 
-      // pop the loading circle
-      Navigator.pop(context);
+      // Attempt signup with Firebase
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: emailController.text,
+          password: confirmPasswordController.text
+      );
+
+      // Sign up succeeded
+      Navigator.pop(context); // Dismiss loading indicator
+
     } on FirebaseAuthException catch (e) {
-      // // pop the loading circle
-      // Navigator.pop(context);
 
-      //show error message
+      // Sign up failed
+      Navigator.pop(context);
+
+      // Check for password mismatch error
+      if (e.code == 'weak-password') {
+        showErrorMessage('Passwords do not match');
+        print(e);
+        return;
+      }
+
+      // Handle other errors
       showErrorMessage(e.code);
     }
-  }
 
+  }
 
   void showErrorMessage(String message) {
     showDialog(
@@ -75,13 +68,16 @@ class _RegisterPage extends State<RegisterPage> {
           backgroundColor: Colors.greenAccent,
           title: Center(
               child: Text(
-            message,
-            style: const TextStyle(color: Colors.white),
-          )),
+                message,
+                style: const TextStyle(color: Colors.white),
+              )),
         );
       },
     );
   }
+
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -118,21 +114,24 @@ class _RegisterPage extends State<RegisterPage> {
                       padding: const EdgeInsets.symmetric(horizontal: 40),
                       child: Column(
                         children: [
-                          const Column(
+                           Column(
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
                               TextInput(
+                                controller: emailController,
                                 icon: FontAwesomeIcons.solidEnvelope,
                                 hint: 'Email',
                                 inputType: TextInputType.emailAddress,
                                 inputAction: TextInputAction.next,
                               ),
                               PasswordInput(
+                                controller: passwordController,
                                 icon: FontAwesomeIcons.lock,
                                 hint: 'Password',
                                 inputAction: TextInputAction.next,
                               ),
                               ConfirmPasswordInput(
+                                controller: confirmPasswordController,
                                 icon: FontAwesomeIcons.lock,
                                 hint: 'Confirm Password',
                                 inputAction: TextInputAction.done,

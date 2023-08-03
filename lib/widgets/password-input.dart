@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-
-import '../loginpage.dart';
 import '../palatte.dart';
 
 
 class PasswordInput extends StatelessWidget {
+  final TextEditingController controller;
   const PasswordInput({
      Key? key,
+    required this.controller,
     required this.icon,
     required this.hint,
     required this.inputAction,
@@ -26,7 +26,7 @@ class PasswordInput extends StatelessWidget {
           borderRadius: BorderRadius.circular(16),
         ),
         child: TextField(
-          controller: passwordController,
+          controller: controller,
           decoration: InputDecoration(
             contentPadding: const EdgeInsets.symmetric(vertical: 20),
             border: InputBorder.none,

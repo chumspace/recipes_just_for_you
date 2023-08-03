@@ -5,8 +5,10 @@ import '../palatte.dart';
 
 
 class ConfirmPasswordInput extends StatelessWidget {
+  final TextEditingController controller;
   const ConfirmPasswordInput({
     Key? key,
+    required this.controller,
     required this.icon,
     required this.hint,
     required this.inputAction,
@@ -28,7 +30,7 @@ class ConfirmPasswordInput extends StatelessWidget {
           borderRadius: BorderRadius.circular(16),
         ),
         child: TextField(
-          controller: confirmPasswordController,
+          controller: controller,
           decoration: InputDecoration(
             contentPadding: const EdgeInsets.symmetric(vertical: 20),
             border: InputBorder.none,
